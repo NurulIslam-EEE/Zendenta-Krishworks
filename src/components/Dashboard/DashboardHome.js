@@ -116,8 +116,8 @@ function DashboardHome(props) {
                 className={navContainer}
                 position="fixed"
                 sx={{
-                    width: { sm: `calc(100% - ${drawerWidth}px)` },
-                    ml: { sm: `${drawerWidth}px` },
+                    width: { xl: `calc(100% - ${drawerWidth}px)` },
+                    ml: { xl: `${drawerWidth}px` },
                 }}
             >
                 <Toolbar sx={{ borderBottom: '1px solid black' }}>
@@ -126,7 +126,7 @@ function DashboardHome(props) {
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, display: { sm: 'block', md: 'block', lg: 'block', xl: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -142,7 +142,7 @@ function DashboardHome(props) {
             </AppBar>
             <Box
                 component="nav"
-                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                sx={{ width: { xl: drawerWidth }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
 
@@ -156,7 +156,7 @@ function DashboardHome(props) {
                         keepMounted: true, // Better open performance on mobile.
                     }}
                     sx={{
-                        display: { xs: 'block', sm: 'none' },
+                        display: { xs: 'block', sm: 'block', lg: 'block', xl: 'block' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
                 >
@@ -165,7 +165,7 @@ function DashboardHome(props) {
                 <Drawer
                     variant="permanent"
                     sx={{
-                        display: { xs: 'none', sm: 'block' },
+                        display: { xs: 'none', sm: 'none', md: 'none', xl: 'block' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
                     open

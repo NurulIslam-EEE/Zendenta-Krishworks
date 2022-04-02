@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import user from '../../img/user2.jpg';
 
 const PatientList = ({ patient }) => {
+    const [appointment, setAppointment] = useState([])
+    useEffect(() => {
+        fetch('https://619f39821ac52a0017ba467e.mockapi.io/patientDetails')
+            .then(res => res.json())
+            .then(data => setAppointment(data))
 
+    }, [])
+    console.log(appointment)
     return (
         <div>
             <Grid container spacing={2}>
-                <Grid item lg={4} xl={3}>
+                <Grid item lg={3} xl={3}>
                     <Box sx={{ height: '370px', width: '300px', background: '#FFFDFD', padding: '40px 20px', margin: '0 auto' }}>
                         <Box sx={{ borderRadius: '50%', overflow: 'hidden', height: '100px', width: '100px', margin: '0 auto' }}>
 
@@ -38,7 +45,7 @@ const PatientList = ({ patient }) => {
                         <Typography sx={{ padding: '10px 40px', textAlign: 'center', border: '1px solid rgba(0,0,0,.3)', background: 'white', marginTop: '10px' }}>Send Message</Typography>
                     </Box>
                 </Grid>
-                <Grid item lg={8} xl={6}>
+                <Grid item lg={9} xl={6}>
                     <Box sx={{ background: '#FFFDFD', padding: '20px 20px 40px 20px', height: '370px', margin: '0 auto' }}>
                         <Grid container spacing={2}>
                             <Grid item lg={4}>
@@ -109,7 +116,7 @@ const PatientList = ({ patient }) => {
                 </Grid>
                 <Grid item lg={3} xl={3}>
                     <Box sx={{ background: '#FFFDFD', height: '370px', width: '300px', margin: '0 auto' }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '20px ' }}>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '20px ', margin: '0 auto' }}>
                             <Typography >Notes </Typography>
                             <Typography sx={{ color: '#0D53FC', fontWeight: '900' }} >See All</Typography>
                         </Box>
@@ -124,12 +131,70 @@ const PatientList = ({ patient }) => {
 
                 </Grid>
                 <Grid item lg={9} xl={9}>
-                    <Box sx={{ background: '#FFFDFD', height: '370px', width: '900px', margin: '0 auto' }}>
-                        <Box sx={{ display: 'flex', height: '50px', width: '100%' }}>
-                            <Typography sx={{ height: '50px', width: '200px' }}>Upcoming Appointment</Typography>
-                            <Typography sx={{ height: '50px', width: '200px' }}>Post</Typography>
-                            <Typography sx={{ height: '50px', width: '200px' }}>Medical  </Typography>
+                    <Box sx={{ background: '#FFFDFD', height: '370px', width: '80%', margin: '0 auto', padding: '30px' }}>
+                        <Box sx={{ display: 'flex', height: '50px', width: '80%', background: '#F2F5F9 ', padding: '15px' }}>
+                            <Typography sx={{ height: '30px', width: '200px', background: 'white', padding: '5px' }}>Upcoming Appointment</Typography>
+                            <Typography sx={{ height: '30px', width: '200px' }}>Post Appointment</Typography>
+                            <Typography sx={{ height: '30px', width: '200px' }}>Medical  Records</Typography>
                         </Box>
+                        <Box sx={{ background: '#F2F5F9 ', width: '100%', margin: '10px', padding: '30px' }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Typography sx={{ height: '30px', width: '200px' }}>Root Canal Treatment</Typography>
+                                <Typography sx={{ width: '250px', background: 'white', padding: '10px 30px' }}>Show Previous Treatment</Typography>
+                            </Box>
+                            <Box sx={{ height: '1px', width: '95%', background: 'rgba(0,0,0,.2)', marginTop: '30px', marginBottom: '30px' }}></Box>
+
+                            <Box sx={{ display: 'flex', alignItems: 'center', background: 'white', padding: '15px', justifyContent: 'space-between' }}>
+                                <Box>
+                                    <Typography variant='h4'>
+                                        26 Nov'19
+
+                                    </Typography>
+                                    <Typography>
+
+                                        09.00-10.00
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ height: '30px', width: '2px', background: 'rgba(0,0,0,.2)' }}></Box>
+                                <Box>
+                                    <Typography>
+                                        Treatment:
+                                    </Typography>
+                                    <Typography>
+                                        Open Access
+                                    </Typography>
+                                </Box>
+                                <Box sx={{ height: '30px', width: '2px', background: 'rgba(0,0,0,.2)' }}></Box>
+                                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                    <Box>
+
+                                        <Typography>
+                                            Dentist:
+                                        </Typography>
+                                        <Typography>
+                                            Drg. Adam H.
+                                        </Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography>
+                                            Nurse:
+                                        </Typography>
+                                        <Typography>
+                                            Jessicamila
+                                        </Typography>
+                                    </Box>
+
+
+                                    <Typography>
+                                        Note
+                                    </Typography>
+
+                                </Box>
+                            </Box>
+
+
+                        </Box>
+
                     </Box>
                 </Grid>
                 <Grid item lg={3} xl={3}>
@@ -145,7 +210,7 @@ const PatientList = ({ patient }) => {
 
 
             </Grid>
-        </div>
+        </div >
     );
 };
 

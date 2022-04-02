@@ -4,6 +4,13 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import user from '../../img/user2.jpg';
 
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
+
 const PatientList = ({ patient }) => {
     const [appointment, setAppointment] = useState([])
     useEffect(() => {
@@ -131,9 +138,9 @@ const PatientList = ({ patient }) => {
 
                 </Grid>
                 <Grid item lg={9} xl={9}>
-                    <Box sx={{ background: '#FFFDFD', height: '370px', width: '80%', margin: '0 auto', padding: '30px' }}>
-                        <Box sx={{ display: 'flex', height: '50px', width: '80%', background: '#F2F5F9 ', padding: '15px' }}>
-                            <Typography sx={{ height: '30px', width: '200px', background: 'white', padding: '5px' }}>Upcoming Appointment</Typography>
+                    <Box sx={{ background: '#FFFDFD', height: '370px', width: '1150px', margin: '0 auto', padding: '20px' }}>
+                        <Box sx={{ display: 'flex', height: '60px', width: '80%', background: '#F2F5F9 ', padding: '15px', justifyContent: 'space-between' }}>
+                            <Typography sx={{ height: '40px', width: '220px', background: 'white', padding: '10px 15px', color: '#0D53FC', fontWeight: '700' }}>Upcoming Appointment</Typography>
                             <Typography sx={{ height: '30px', width: '200px' }}>Post Appointment</Typography>
                             <Typography sx={{ height: '30px', width: '200px' }}>Medical  Records</Typography>
                         </Box>
@@ -143,6 +150,7 @@ const PatientList = ({ patient }) => {
                                 <Typography sx={{ width: '250px', background: 'white', padding: '10px 30px' }}>Show Previous Treatment</Typography>
                             </Box>
                             <Box sx={{ height: '1px', width: '95%', background: 'rgba(0,0,0,.2)', marginTop: '30px', marginBottom: '30px' }}></Box>
+                            {/* Appointment schedule */}
 
                             <Box sx={{ display: 'flex', alignItems: 'center', background: 'white', padding: '15px', justifyContent: 'space-between' }}>
                                 <Box>
@@ -191,6 +199,10 @@ const PatientList = ({ patient }) => {
 
                                 </Box>
                             </Box>
+
+
+
+
 
 
                         </Box>

@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #F2F5F9 !important;
 }
+/* .css-ha3bif-MuiTimelineItem-root::before{
+  content: none !important;
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

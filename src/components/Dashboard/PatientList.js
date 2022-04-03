@@ -3,6 +3,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import user from '../../img/user2.jpg';
+import { Paper } from "@mui/material";
+import ArticleIcon from "@mui/icons-material/Article";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -11,15 +16,29 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 
-const PatientList = ({ patient }) => {
+const PatientList = () => {
     const [appointment, setAppointment] = useState([])
+    const [patient, setPatient] = useState([]);
+    const [files, setFiles] = useState([]);
     useEffect(() => {
         fetch('https://619f39821ac52a0017ba467e.mockapi.io/patientDetails')
             .then(res => res.json())
             .then(data => setAppointment(data))
 
     }, [])
+
+
+    useEffect(() => {
+        fetch("https://619f39821ac52a0017ba467e.mockapi.io/patientDetails")
+            .then((res) => res.json())
+            .then((data) => setPatient(data));
+    }, []);
     console.log(appointment)
+    useEffect(() => {
+        fetch("https://619f39821ac52a0017ba467e.mockapi.io/Files")
+            .then((res) => res.json())
+            .then((data) => setFiles(data));
+    }, []);
     return (
         <div>
             <Grid container spacing={2}>
@@ -121,22 +140,113 @@ const PatientList = ({ patient }) => {
                         </Grid>
                     </Box>
                 </Grid>
+
                 <Grid item lg={3} xl={3}>
-                    <Box sx={{ background: '#FFFDFD', height: '370px', width: '300px', margin: '0 auto' }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '20px ', margin: '0 auto' }}>
-                            <Typography >Notes </Typography>
-                            <Typography sx={{ color: '#0D53FC', fontWeight: '900' }} >See All</Typography>
+                    <Box
+                        sx={{
+                            background: "#FFFDFD",
+                            height: "370px",
+                            width: "300px",
+                            margin: "0 auto",
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                padding: "20px ",
+                                margin: "0 auto",
+                            }}
+                        >
+                            <Typography sx={{ color: "#2D3B4C", fontWeight: "900" }}>
+                                Notes
+                            </Typography>
+                            <Typography sx={{ color: "#0D53FC", fontWeight: "900" }}>
+                                See All
+                            </Typography>
                         </Box>
-                        <Box sx={{ background: '#F2F5F9', height: '200px', width: '270px', textAlign: 'center', margin: '0 auto', position: 'relative', padding: '20px' }}>
-                            <Typography sx={{ textAlign: 'left' }}>-This patient is lorem ipsum dolor sit amet</Typography>
-                            <Typography sx={{ textAlign: 'left' }}>-lorem ipsum dolor sit amet</Typography>
-                            <Typography sx={{ textAlign: 'left' }}>- Has alergic history with Cataflam</Typography>
-                            <Typography sx={{ height: '40px', width: '120px', background: '#0D53FC', color: 'white', paddingTop: '8px', borderRadius: '5px', position: 'absolute', bottom: '15px', right: '15px' }}>Save Note</Typography>
+                        <Box
+                            sx={{
+                                background: "#F2F5F9",
+                                height: "200px",
+                                width: "270px",
+                                textAlign: "center",
+                                margin: "0 auto",
+                                position: "relative",
+                                padding: "20px",
+                            }}
+                        >
+                            <Typography sx={{ textAlign: "left", fontSize: "0.9rem" }}>
+                                -This patient is lorem ipsum dolor sit amet
+                            </Typography>
+                            <Typography sx={{ textAlign: "left", fontSize: "0.9rem" }}>
+                                -lorem ipsum dolor sit amet
+                            </Typography>
+                            <Typography sx={{ textAlign: "left", fontSize: "0.9rem" }}>
+                                - Has alergic history with Cataflam
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    height: "40px",
+                                    width: "120px",
+                                    background: "#0D53FC",
+                                    color: "white",
+                                    paddingTop: "8px",
+                                    borderRadius: "5px",
+                                    position: "absolute",
+                                    bottom: "15px",
+                                    right: "15px",
+                                }}
+                            >
+                                Save Note
+                            </Typography>
+                        </Box>
+                        <Typography
+                            sx={{
+                                textAlign: "left",
+                                fontSize: "0.9rem",
+                                padding: "20px 20px 0px",
+                            }}
+                        >
+                            Lorem ipsum dolor sit amet
+                        </Typography>
+                        <Box
+                            sx={{
+                                padding: "10px 20px",
+                                borderRadius: "13px !important",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                margin: "0 auto",
+                                color: "gray",
+                            }}
+                        >
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                                <PersonOutlineOutlinedIcon sx={{ color: "#0D53FC" }} />
+                                <Typography
+                                    sx={{
+                                        color: "gray",
+                                        marginLeft: "0.2rem",
+                                        fontSize: "0.9rem",
+                                    }}
+                                >
+                                    Drg. Mega Nanade
+                                </Typography>
+                            </Box>
+                            <Box>
+                                <Typography
+                                    sx={{ textAlign: "end", color: "gray", fontSize: "0.9rem" }}
+                                >
+                                    20 Nov 19
+                                </Typography>
+                            </Box>
                         </Box>
                     </Box>
-
-
                 </Grid>
+                {/* notes section end */}
+
+
+
                 <Grid item lg={9} xl={9}>
                     <Box sx={{ background: '#FFFDFD', height: '370px', width: '1150px', margin: '0 auto', padding: '20px' }}>
                         <Box sx={{ display: 'flex', height: '60px', width: '80%', background: '#F2F5F9 ', padding: '15px', justifyContent: 'space-between' }}>
@@ -209,14 +319,67 @@ const PatientList = ({ patient }) => {
 
                     </Box>
                 </Grid>
+                {/* file documents start */}
                 <Grid item lg={3} xl={3}>
-                    <Box sx={{ background: '#FFFDFD', height: '370px', width: '300px', margin: '0 auto' }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '20px ' }}>
-                            <Typography >Files/Documents </Typography>
-                            <Typography sx={{ color: '#0D53FC', fontWeight: '900' }} >Add Files</Typography>
+                    <Box
+                        sx={{
+                            background: "#FFFDFD",
+                            height: "370px",
+                            width: "300px",
+                            margin: "0 auto",
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                padding: "20px ",
+                            }}
+                        >
+                            <Typography sx={{ color: "#2D3B4C", fontWeight: "600" }}>
+                                Files/Documents
+                            </Typography>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    color: "#0D53FC",
+                                }}
+                            >
+                                <UploadFileIcon sx={{ marginRight: "0.2rem" }} />
+                                <Typography sx={{ fontWeight: "900" }}>Add Files</Typography>
+                            </Box>
                         </Box>
+
+                        {files.slice(1, 4).map((file) => (
+                            <Box sx={{ padding: "10px 20px 0px" }}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        boxShadow: "1px 5px 10px #EEECEC !important",
+                                        borderRadius: "13px !important",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "space-between",
+                                        margin: "0 auto",
+                                        color: "gray",
+                                    }}
+                                >
+                                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                                        <ArticleIcon />
+                                        <Typography sx={{ marginLeft: "0.3rem" }}>
+                                            {file.name}
+                                        </Typography>
+                                    </Box>
+                                    <Box>
+                                        <Typography sx={{ textAlign: "end" }}>0.123kb</Typography>{" "}
+                                    </Box>
+                                </Paper>
+                            </Box>
+                        ))}
                     </Box>
                 </Grid>
+                {/* file documents end */}
 
 
 
